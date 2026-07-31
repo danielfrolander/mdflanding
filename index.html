@@ -431,11 +431,17 @@
       }
 
       if (btn && panel) {
-        btn.addEventListener('click', function () {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
           setOpen(panel.getAttribute('data-open') !== 'true');
         });
         panel.querySelectorAll('.mobile-link').forEach(function (link) {
           link.addEventListener('click', function () { setOpen(false); });
+        });
+        document.addEventListener('click', function (e) {
+          if (panel.getAttribute('data-open') !== 'true') return;
+          if (panel.contains(e.target) || btn.contains(e.target)) return;
+          setOpen(false);
         });
         document.addEventListener('keydown', function (e) {
           if (e.key === 'Escape') setOpen(false);
