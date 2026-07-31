@@ -123,6 +123,21 @@
       visibility: visible;
     }
 
+    #mobile-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 35;
+      background: rgba(26, 31, 28, 0.28);
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    #mobile-backdrop[hidden] {
+      display: none;
+    }
+
     .nav-link {
       position: relative;
       transition: color 0.2s ease;
@@ -240,6 +255,7 @@
       </nav>
     </div>
   </header>
+  <button type="button" id="mobile-backdrop" class="md:hidden" hidden aria-label="Stäng meny"></button>
 
   <main id="main">
     <section class="relative overflow-hidden border-b border-ink/8">
@@ -415,6 +431,7 @@
       /* Mobile menu */
       var btn = document.getElementById('menu-btn');
       var panel = document.getElementById('mobile-panel');
+      var backdrop = document.getElementById('mobile-backdrop');
       var iconOpen = document.getElementById('icon-open');
       var iconClose = document.getElementById('icon-close');
 
@@ -428,21 +445,29 @@
         btn.setAttribute('aria-label', label);
         iconOpen.classList.toggle('hidden', open);
         iconClose.classList.toggle('hidden', !open);
+        if (backdrop) {
+          backdrop.hidden = !open;
+          backdrop.setAttribute('aria-label', label);
+        }
+        document.documentElement.classList.toggle('overflow-hidden', open);
       }
 
       if (btn && panel) {
         btn.addEventListener('click', function (e) {
+          e.preventDefault();
           e.stopPropagation();
           setOpen(panel.getAttribute('data-open') !== 'true');
         });
         panel.querySelectorAll('.mobile-link').forEach(function (link) {
           link.addEventListener('click', function () { setOpen(false); });
         });
-        document.addEventListener('click', function (e) {
-          if (panel.getAttribute('data-open') !== 'true') return;
-          if (panel.contains(e.target) || btn.contains(e.target)) return;
-          setOpen(false);
-        });
+        if (backdrop) {
+          backdrop.addEventListener('click', function () { setOpen(false); });
+          backdrop.addEventListener('touchend', function (e) {
+            e.preventDefault();
+            setOpen(false);
+          }, { passive: false });
+        }
         document.addEventListener('keydown', function (e) {
           if (e.key === 'Escape') setOpen(false);
         });
