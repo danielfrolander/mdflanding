@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDF Design & Consulting | Utveckling & ekonomi</title>
+  <meta name="description" content="MDF Design & Consulting hjälper med ekonomisk redovisning & controlling samt utveckling av web, app och Excel. Konsultation inom ekonomi och IT.">
+  <link rel="canonical" href="https://mdfconsulting.se/">
+  <meta name="theme-color" content="#1f4d3a">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:url" content="https://mdfconsulting.se/">
+  <meta property="og:title" content="MDF Design & Consulting | Utveckling & ekonomi">
+  <meta property="og:description" content="Utveckling och ekonomi på samma bord. Redovisning, controlling, web, app, Excel – och ren konsultation inom ekonomi och IT.">
+  <meta property="og:site_name" content="MDF Design & Consulting">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MDF Design & Consulting | Utveckling & ekonomi">
+  <meta name="twitter:description" content="Utveckling och ekonomi på samma bord. Redovisning, controlling, web, app, Excel – och ren konsultation inom ekonomi och IT.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231f4d3a'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23f4f6f3'%3EMDF%3C/text%3E%3C/svg%3E">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#1a1f1c',
+            mute: '#5a635c',
+            paper: '#f4f6f3',
+            mist: '#e6ebe6',
+            forest: '#1f4d3a',
+            leaf: '#2d6a4f',
+          },
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['Manrope', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1f1c;
+      --mute: #5a635c;
+      --paper: #f4f6f3;
+      --mist: #e6ebe6;
+      --forest: #1f4d3a;
+      --leaf: #2d6a4f;
+    }
+
+    body {
+      font-family: 'Manrope', system-ui, sans-serif;
+      background-color: var(--paper);
+      color: var(--ink);
+      background-image:
+        radial-gradient(ellipse 120% 80% at 10% -20%, rgba(31, 77, 58, 0.08), transparent 50%),
+        radial-gradient(ellipse 90% 60% at 100% 0%, rgba(45, 106, 79, 0.06), transparent 45%),
+        linear-gradient(180deg, #f7f9f6 0%, #f0f3ef 100%);
+      background-attachment: fixed;
+    }
+
+    .font-display { font-family: 'Fraunces', Georgia, serif; }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -100%;
+      z-index: 100;
+      padding: 0.5rem 1rem;
+      background: var(--forest);
+      color: white;
+      border-radius: 0.5rem;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--leaf);
+      outline-offset: 3px;
+    }
+
+    .hero-in { animation: heroIn 0.7s ease-out both; }
+    .hero-in-delay { animation: heroIn 0.7s ease-out 0.12s both; }
+    .hero-in-logo { animation: heroIn 0.8s ease-out 0.18s both; }
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #mobile-panel {
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    #mobile-panel[data-open="false"] {
+      transform: translateY(-0.5rem);
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+    #mobile-panel[data-open="true"] {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    .btn-primary {
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .product-link {
+      transition: color 0.2s ease;
+    }
+    .product-link .arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .product-link:hover .arrow { transform: translateX(3px); }
+
+    .service-row {
+      transition: background-color 0.25s ease;
+    }
+    .service-row:hover {
+      background-color: rgba(31, 77, 58, 0.04);
+    }
+
+    .logo-mark {
+      transition: opacity 0.2s ease;
+    }
+    .logo-mark:hover { opacity: 0.85; }
+
+    .lang-btn[aria-pressed="true"] {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .logo-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      shape-rendering: geometricPrecision;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-forest/20 selection:text-ink">
+
+  <a href="#main" class="skip-link" data-i18n="skip">Hoppa till innehåll</a>
+
+  <header class="sticky top-0 z-50 border-b border-ink/8 bg-paper/85 backdrop-blur-md">
+    <div class="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-5 sm:px-6">
+      <a href="#" class="logo-mark flex items-center gap-3" aria-label="MDF Design & Consulting – startsida">
+        <svg class="h-11 w-11 shrink-0 sm:h-12 sm:w-12" viewBox="0 0 1254 1254" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet"><g transform="translate(0,1254) scale(0.1,-0.1)" fill="#1f4d3a" stroke="none"><path d="M0 6270 l0 -6270 6270 0 6270 0 0 6270 0 6270 -6270 0 -6270 0 0 -6270z m7208 868 l-3 -1953 -100 -22 c-209 -47 -332 -53 -1100 -53 l-715 0 0 68 c0 37 -1 745 -2 1574 -2 971 1 1511 7 1516 12 11 155 56 277 87 l88 23 2 -1442 3 -1441 567 0 c406 0 570 3 578 11 8 8 11 306 11 1090 0 594 -1 1312 -1 1597 l0 517 -437 0 c-470 0 -535 -5 -759 -55 -63 -14 -162 -41 -222 -60 -59 -19 -109 -35 -112 -35 -3 0 -5 88 -5 196 0 174 2 196 17 205 51 28 393 102 548 118 47 4 372 9 723 10 l637 1 -2 -1952z m1912 1382 l0 -570 -190 0 -190 0 0 380 0 380 -495 0 -495 0 0 -715 0 -715 671 0 672 0 -7 -42 c-3 -24 -20 -103 -37 -175 l-31 -133 -634 0 -634 0 -2 -767 -3 -767 -40 -23 c-46 -26 -267 -118 -307 -128 l-28 -7 0 1926 0 1926 875 0 875 0 0 -570z m-4002 -1522 l-3 -1902 -182 -2 -183 -1 -1 1541 c0 848 -4 1560 -7 1584 l-7 43 -82 -65 c-44 -35 -113 -95 -152 -131 l-71 -67 0 -1449 0 -1449 -185 0 -185 0 -2 1193 -3 1192 -67 -135 c-100 -203 -161 -391 -210 -657 -21 -112 -22 -152 -27 -858 l-6 -740 -185 0 -185 0 0 715 c1 623 3 732 18 845 80 595 309 1095 706 1544 139 157 403 374 595 490 97 58 396 209 419 210 4 1 6 -855 5 -1901z m3752 -432 c0 -21 -87 -181 -157 -290 -138 -213 -294 -394 -465 -541 l-113 -97 -3 256 -2 256 80 91 c68 77 147 187 224 312 l16 27 210 0 c171 0 210 -3 210 -14z"/></g></svg>
+        <span class="hidden text-sm font-semibold text-ink sm:inline">MDF Design &amp; Consulting</span>
+      </a>
+
+      <nav class="hidden items-center gap-8 text-sm font-medium text-mute md:flex" aria-label="Primary" data-i18n-aria="nav_aria">
+        <a href="#tjanster" class="nav-link hover:text-ink" data-i18n="nav_services">Vad vi gör</a>
+        <a href="#appar" class="nav-link hover:text-ink" data-i18n="nav_examples">Exempel</a>
+        <a href="#om-oss" class="nav-link hover:text-ink" data-i18n="nav_about">Om oss</a>
+        <a href="#kontakt" class="nav-link hover:text-ink" data-i18n="nav_contact">Kontakt</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-1 text-xs text-mute" role="group" aria-label="Language">
+          <button type="button" class="lang-btn rounded px-1.5 py-1 hover:text-ink" data-lang="sv" aria-pressed="true">SV</button>
+          <span class="text-ink/20" aria-hidden="true">/</span>
+          <button type="button" class="lang-btn rounded px-1.5 py-1 hover:text-ink" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a href="mailto:contact@mdfconsulting.se" class="btn-primary hidden rounded-lg bg-forest px-4 py-2 text-sm font-semibold text-paper hover:bg-leaf sm:inline-flex" data-i18n="cta_short">
+          Hör av dig
+        </a>
+        <button
+          type="button"
+          id="menu-btn"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-ink/10 text-ink transition-colors hover:bg-mist md:hidden"
+          aria-controls="mobile-panel"
+          aria-expanded="false"
+          aria-label="Öppna meny"
+          data-i18n-aria="menu_open"
+        >
+          <svg id="icon-open" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg id="icon-close" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-panel" data-open="false" class="border-t border-ink/8 bg-paper md:hidden" role="dialog" aria-label="Menu" data-i18n-aria="mobile_menu">
+      <nav class="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-4 text-sm font-medium">
+        <a href="#tjanster" class="mobile-link rounded-lg px-3 py-3 text-ink hover:bg-mist" data-i18n="nav_services">Vad vi gör</a>
+        <a href="#appar" class="mobile-link rounded-lg px-3 py-3 text-ink hover:bg-mist" data-i18n="nav_examples">Exempel</a>
+        <a href="#om-oss" class="mobile-link rounded-lg px-3 py-3 text-ink hover:bg-mist" data-i18n="nav_about">Om oss</a>
+        <a href="#kontakt" class="mobile-link rounded-lg px-3 py-3 text-ink hover:bg-mist" data-i18n="nav_contact">Kontakt</a>
+        <a href="mailto:contact@mdfconsulting.se" class="btn-primary mobile-link mt-2 rounded-lg bg-forest px-3 py-3 text-center font-semibold text-paper hover:bg-leaf" data-i18n="cta_short">Hör av dig</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="relative overflow-hidden border-b border-ink/8">
+      <div class="pointer-events-none absolute inset-0 opacity-[0.35]" aria-hidden="true" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231f4d3a' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+
+      <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 sm:gap-14 sm:px-6 sm:py-20 md:grid-cols-2 md:gap-16 md:py-24 lg:gap-20">
+        <!-- MDF monogram + clean SVG text tagline (traced tagline removed) -->
+        <div class="hero-in-logo order-first flex justify-center md:justify-start">
+          <div class="w-full max-w-[20rem] sm:max-w-[26rem] md:max-w-none lg:max-w-[30rem]">
+            <div class="overflow-hidden rounded-sm bg-[#f4f6f3]">
+              <svg class="logo-img" viewBox="0 0 1254 1060" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" preserveAspectRatio="xMidYMid meet"><title>MDF Design &amp; Consulting</title><g transform="translate(0,1254) scale(0.1,-0.1)" fill="#1f4d3a" stroke="none"><path d="M0 6270 l0 -6270 6270 0 6270 0 0 6270 0 6270 -6270 0 -6270 0 0 -6270z m7208 868 l-3 -1953 -100 -22 c-209 -47 -332 -53 -1100 -53 l-715 0 0 68 c0 37 -1 745 -2 1574 -2 971 1 1511 7 1516 12 11 155 56 277 87 l88 23 2 -1442 3 -1441 567 0 c406 0 570 3 578 11 8 8 11 306 11 1090 0 594 -1 1312 -1 1597 l0 517 -437 0 c-470 0 -535 -5 -759 -55 -63 -14 -162 -41 -222 -60 -59 -19 -109 -35 -112 -35 -3 0 -5 88 -5 196 0 174 2 196 17 205 51 28 393 102 548 118 47 4 372 9 723 10 l637 1 -2 -1952z m1912 1382 l0 -570 -190 0 -190 0 0 380 0 380 -495 0 -495 0 0 -715 0 -715 671 0 672 0 -7 -42 c-3 -24 -20 -103 -37 -175 l-31 -133 -634 0 -634 0 -2 -767 -3 -767 -40 -23 c-46 -26 -267 -118 -307 -128 l-28 -7 0 1926 0 1926 875 0 875 0 0 -570z m-4002 -1522 l-3 -1902 -182 -2 -183 -1 -1 1541 c0 848 -4 1560 -7 1584 l-7 43 -82 -65 c-44 -35 -113 -95 -152 -131 l-71 -67 0 -1449 0 -1449 -185 0 -185 0 -2 1193 -3 1192 -67 -135 c-100 -203 -161 -391 -210 -657 -21 -112 -22 -152 -27 -858 l-6 -740 -185 0 -185 0 0 715 c1 623 3 732 18 845 80 595 309 1095 706 1544 139 157 403 374 595 490 97 58 396 209 419 210 4 1 6 -855 5 -1901z m3752 -432 c0 -21 -87 -181 -157 -290 -138 -213 -294 -394 -465 -541 l-113 -97 -3 256 -2 256 80 91 c68 77 147 187 224 312 l16 27 210 0 c171 0 210 -3 210 -14z"/></g><text x="627" y="990" text-anchor="middle" fill="#f4f6f3" font-family="Manrope, system-ui, sans-serif" font-size="46" font-weight="600" letter-spacing="10">DESIGN &amp; CONSULTING</text></svg>
+            </div>
+</div>
+        </div>
+
+        <div class="md:py-4">
+          <h1 class="hero-in font-display text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl md:text-[2.75rem] md:leading-[1.15]" data-i18n="hero_title">
+            Utveckling och ekonomi – på samma bord.
+          </h1>
+          <p class="hero-in-delay mt-5 max-w-xl text-base leading-relaxed text-mute sm:text-lg" data-i18n="hero_lead">
+            Vi hjälper med redovisning &amp; controlling samt utveckling – web, app, Excel och mer. Ren konsultation inom ekonomi och IT erbjuds också.
+          </p>
+          <div class="hero-in-delay mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="mailto:contact@mdfconsulting.se" class="btn-primary inline-flex items-center justify-center rounded-lg bg-forest px-6 py-3 text-sm font-semibold text-paper hover:bg-leaf" data-i18n="cta_contact">
+              Kontakta oss
+            </a>
+            <a href="#tjanster" class="btn-secondary inline-flex items-center justify-center rounded-lg border border-ink/15 bg-white/50 px-6 py-3 text-sm font-semibold text-ink hover:border-ink/25 hover:bg-white" data-i18n="cta_services">
+              Se vad vi gör
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tjanster" class="border-b border-ink/8 py-20 sm:py-24">
+      <div class="mx-auto max-w-5xl px-5 sm:px-6">
+        <div class="max-w-2xl">
+          <h2 class="font-display text-3xl font-semibold tracking-tight text-ink" data-i18n="services_title">Vad vi gör</h2>
+          <p class="mt-3 text-mute" data-i18n="services_lead">Tre spår – samma kontakt. Du får hjälp där affären och tekniken möts.</p>
+        </div>
+
+        <div class="mt-14 divide-y divide-ink/10 border-y border-ink/10">
+          <article class="service-row grid gap-4 px-2 py-10 sm:grid-cols-[minmax(0,12rem)_1fr] sm:gap-10 sm:px-3">
+            <div class="flex items-start gap-3">
+              <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-forest/10 text-forest" aria-hidden="true">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.5l3-7.5h12l3 7.5M3 13.5H21M5.5 18h13M8 13.5V18m8-4.5V18"/></svg>
+              </span>
+              <h3 class="font-display text-xl font-semibold text-ink" data-i18n="svc1_title">Ekonomi &amp; controlling</h3>
+            </div>
+            <p class="text-mute leading-relaxed sm:pt-1" data-i18n="svc1_body">
+              Redovisning, controlling och ekonomisk rådgivning. Struktur som gör siffrorna begripliga och beslut enklare.
+            </p>
+          </article>
+
+          <article class="service-row grid gap-4 px-2 py-10 sm:grid-cols-[minmax(0,12rem)_1fr] sm:gap-10 sm:px-3">
+            <div class="flex items-start gap-3">
+              <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-forest/10 text-forest" aria-hidden="true">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3M13 15h3M5 5h14a1 1 0 011 1v12a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg>
+              </span>
+              <h3 class="font-display text-xl font-semibold text-ink" data-i18n="svc2_title">Utveckling</h3>
+            </div>
+            <p class="text-mute leading-relaxed sm:pt-1" data-i18n="svc2_body">
+              Web, mobilappar, Excel-verktyg och andra digitala lösningar – från idé till något ni faktiskt använder.
+            </p>
+          </article>
+
+          <article class="service-row grid gap-4 px-2 py-10 sm:grid-cols-[minmax(0,12rem)_1fr] sm:gap-10 sm:px-3">
+            <div class="flex items-start gap-3">
+              <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-forest/10 text-forest" aria-hidden="true">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M6 4h12a2 2 0 012 2v10a2 2 0 01-2 2H9l-4 3v-3H6a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+              </span>
+              <h3 class="font-display text-xl font-semibold text-ink" data-i18n="svc3_title">Konsultation</h3>
+            </div>
+            <p class="text-mute leading-relaxed sm:pt-1" data-i18n="svc3_body">
+              Ren rådgivning inom ekonomi och IT-utveckling – utan krav på att vi bygger produkten. Sparring, vägval och projektstöd.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="appar" class="border-b border-ink/8 bg-white/40 py-20 sm:py-24">
+      <div class="mx-auto max-w-5xl px-5 sm:px-6">
+        <div class="max-w-2xl">
+          <h2 class="font-display text-3xl font-semibold tracking-tight text-ink" data-i18n="apps_title">Exempel på vad vi bygger</h2>
+          <p class="mt-3 text-mute" data-i18n="apps_lead">Egna produkter och uppdrag – ett urval av appar vi utvecklat och driver.</p>
+        </div>
+
+        <ul class="mt-12 grid gap-8 sm:grid-cols-3">
+          <li class="border-t border-ink/15 pt-6">
+            <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app1_cat">Träning &amp; hälsa</p>
+            <h3 class="mt-2 font-display text-xl font-semibold text-ink">
+              <a href="https://coathlete.se" class="product-link inline-flex items-center gap-1.5 hover:text-forest" target="_blank" rel="noopener noreferrer">
+                Coathlete <span class="arrow text-sm" aria-hidden="true">→</span>
+              </a>
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app1_body">Mobilplattform för idrottare och träningsgrupper – event och gemenskap.</p>
+            <p class="mt-4 text-xs font-medium text-leaf" data-i18n="status_live">Lanserad · coathlete.se</p>
+          </li>
+          <li class="border-t border-ink/15 pt-6">
+            <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app2_cat">Verktyg &amp; resa</p>
+            <h3 class="mt-2 font-display text-xl font-semibold text-ink">Yumlate</h3>
+            <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app2_body">Appen som hjälper dig på dina resor världen över</p>
+            <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev">Under utveckling</p>
+          </li>
+          <li class="border-t border-ink/15 pt-6">
+            <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app3_cat">Sport &amp; analys</p>
+            <h3 class="mt-2 font-display text-xl font-semibold text-ink">Totomat</h3>
+            <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app3_body">Applikation för analys och statistik inom travsport.</p>
+            <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev">Under utveckling</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="om-oss" class="border-b border-ink/8 py-20 sm:py-24">
+      <div class="mx-auto max-w-5xl px-5 sm:px-6">
+        <div class="max-w-2xl">
+          <h2 class="font-display text-3xl font-semibold tracking-tight text-ink" data-i18n="about_title">Om oss</h2>
+          <p class="mt-5 text-lg leading-relaxed text-ink/90" data-i18n="about_p1">
+            MDF Design &amp; Consulting drivs av Marie och Daniel Frölander. Vi kombinerar erfarenhet inom ekonomi och projektledning med praktisk mjukvaruutveckling.
+          </p>
+          <p class="mt-4 leading-relaxed text-mute" data-i18n="about_p2">
+            Målet är enkelt: förverkliga idéer – egna produkter eller uppdrag där ni behöver mer klarhet, mer struktur eller mer kod.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="kontakt" class="bg-ink text-paper/70">
+    <div class="mx-auto grid max-w-5xl gap-12 px-5 py-16 sm:px-6 md:grid-cols-2">
+      <div>
+        <div class="flex items-center gap-3">
+          <svg class="h-12 w-12 shrink-0" viewBox="0 0 1254 1254" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet"><g transform="translate(0,1254) scale(0.1,-0.1)" fill="#f4f6f3" stroke="none"><path d="M0 6270 l0 -6270 6270 0 6270 0 0 6270 0 6270 -6270 0 -6270 0 0 -6270z m7208 868 l-3 -1953 -100 -22 c-209 -47 -332 -53 -1100 -53 l-715 0 0 68 c0 37 -1 745 -2 1574 -2 971 1 1511 7 1516 12 11 155 56 277 87 l88 23 2 -1442 3 -1441 567 0 c406 0 570 3 578 11 8 8 11 306 11 1090 0 594 -1 1312 -1 1597 l0 517 -437 0 c-470 0 -535 -5 -759 -55 -63 -14 -162 -41 -222 -60 -59 -19 -109 -35 -112 -35 -3 0 -5 88 -5 196 0 174 2 196 17 205 51 28 393 102 548 118 47 4 372 9 723 10 l637 1 -2 -1952z m1912 1382 l0 -570 -190 0 -190 0 0 380 0 380 -495 0 -495 0 0 -715 0 -715 671 0 672 0 -7 -42 c-3 -24 -20 -103 -37 -175 l-31 -133 -634 0 -634 0 -2 -767 -3 -767 -40 -23 c-46 -26 -267 -118 -307 -128 l-28 -7 0 1926 0 1926 875 0 875 0 0 -570z m-4002 -1522 l-3 -1902 -182 -2 -183 -1 -1 1541 c0 848 -4 1560 -7 1584 l-7 43 -82 -65 c-44 -35 -113 -95 -152 -131 l-71 -67 0 -1449 0 -1449 -185 0 -185 0 -2 1193 -3 1192 -67 -135 c-100 -203 -161 -391 -210 -657 -21 -112 -22 -152 -27 -858 l-6 -740 -185 0 -185 0 0 715 c1 623 3 732 18 845 80 595 309 1095 706 1544 139 157 403 374 595 490 97 58 396 209 419 210 4 1 6 -855 5 -1901z m3752 -432 c0 -21 -87 -181 -157 -290 -138 -213 -294 -394 -465 -541 l-113 -97 -3 256 -2 256 80 91 c68 77 147 187 224 312 l16 27 210 0 c171 0 210 -3 210 -14z"/></g></svg>
+          <h2 class="font-display text-xl font-semibold text-paper">MDF Design &amp; Consulting</h2>
+        </div>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed" data-i18n="footer_lead">
+          Fråga om redovisning, controlling, utveckling eller konsultation – vi svarar gärna.
+        </p>
+        <a href="mailto:contact@mdfconsulting.se" class="btn-primary mt-6 inline-flex rounded-lg bg-paper px-5 py-2.5 text-sm font-semibold text-ink hover:bg-mist">
+          contact@mdfconsulting.se
+        </a>
+      </div>
+      <div class="text-sm">
+        <h3 class="font-semibold text-paper" data-i18n="footer_contact">Kontaktuppgifter</h3>
+        <dl class="mt-4 space-y-3">
+          <div class="flex flex-wrap gap-x-2 gap-y-1">
+            <dt class="text-paper/45" data-i18n="label_email">E-post</dt>
+            <dd><a href="mailto:contact@mdfconsulting.se" class="text-paper underline-offset-2 transition-opacity hover:opacity-80 hover:underline">contact@mdfconsulting.se</a></dd>
+          </div>
+          <div class="flex flex-wrap gap-x-2 gap-y-1">
+            <dt class="text-paper/45" data-i18n="label_location">Ort</dt>
+            <dd class="text-paper/85" data-i18n="value_location">Sverige</dd>
+          </div>
+          <div class="flex flex-wrap gap-x-2 gap-y-1">
+            <dt class="text-paper/45" data-i18n="label_company">Bolag</dt>
+            <dd class="text-paper/85">MDF Design &amp; Consulting HB</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+    <div class="border-t border-paper/10">
+      <div class="mx-auto flex max-w-5xl flex-col gap-2 px-5 py-6 text-xs text-paper/40 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <p data-i18n="copyright">© 2026 MDF Design &amp; Consulting. Alla rättigheter förbehållna.</p>
+        <p>mdfconsulting.se</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      /* Mobile menu */
+      var btn = document.getElementById('menu-btn');
+      var panel = document.getElementById('mobile-panel');
+      var iconOpen = document.getElementById('icon-open');
+      var iconClose = document.getElementById('icon-close');
+
+      function setOpen(open) {
+        if (!btn || !panel) return;
+        panel.setAttribute('data-open', open ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        var label = open
+          ? (document.documentElement.lang === 'en' ? 'Close menu' : 'Stäng meny')
+          : (document.documentElement.lang === 'en' ? 'Open menu' : 'Öppna meny');
+        btn.setAttribute('aria-label', label);
+        iconOpen.classList.toggle('hidden', open);
+        iconClose.classList.toggle('hidden', !open);
+      }
+
+      if (btn && panel) {
+        btn.addEventListener('click', function () {
+          setOpen(panel.getAttribute('data-open') !== 'true');
+        });
+        panel.querySelectorAll('.mobile-link').forEach(function (link) {
+          link.addEventListener('click', function () { setOpen(false); });
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') setOpen(false);
+        });
+      }
+
+      /* i18n */
+      var dict = {
+        sv: {
+          skip: 'Hoppa till innehåll',
+          nav_services: 'Vad vi gör',
+          nav_examples: 'Exempel',
+          nav_about: 'Om oss',
+          nav_contact: 'Kontakt',
+          cta_short: 'Hör av dig',
+          cta_contact: 'Kontakta oss',
+          cta_services: 'Se vad vi gör',
+          hero_title: 'Utveckling och ekonomi – på samma bord.',
+          hero_lead: 'Vi hjälper med redovisning & controlling samt utveckling – web, app, Excel och mer. Ren konsultation inom ekonomi och IT erbjuds också.',
+          services_title: 'Vad vi gör',
+          services_lead: 'Tre spår – samma kontakt. Du får hjälp där affären och tekniken möts.',
+          svc1_title: 'Ekonomi & controlling',
+          svc1_body: 'Redovisning, controlling och ekonomisk rådgivning. Struktur som gör siffrorna begripliga och beslut enklare.',
+          svc2_title: 'Utveckling',
+          svc2_body: 'Web, mobilappar, Excel-verktyg och andra digitala lösningar – från idé till något ni faktiskt använder.',
+          svc3_title: 'Konsultation',
+          svc3_body: 'Ren rådgivning inom ekonomi och IT-utveckling – utan krav på att vi bygger produkten. Sparring, vägval och projektstöd.',
+          apps_title: 'Exempel på vad vi bygger',
+          apps_lead: 'Egna produkter och uppdrag – ett urval av appar vi utvecklat och driver.',
+          app1_cat: 'Träning & hälsa',
+          app1_body: 'Mobilplattform för idrottare och träningsgrupper – event och gemenskap.',
+          app2_cat: 'Verktyg & resa',
+          app2_body: 'Appen som hjälper dig på dina resor världen över',
+          app3_cat: 'Sport & analys',
+          app3_body: 'Applikation för analys och statistik inom travsport.',
+          status_live: 'Lanserad · coathlete.se',
+          status_dev: 'Under utveckling',
+          about_title: 'Om oss',
+          about_p1: 'MDF Design & Consulting drivs av Marie och Daniel Frölander. Vi kombinerar erfarenhet inom ekonomi och projektledning med praktisk mjukvaruutveckling.',
+          about_p2: 'Målet är enkelt: förverkliga idéer – egna produkter eller uppdrag där ni behöver mer klarhet, mer struktur eller mer kod.',
+          footer_lead: 'Fråga om redovisning, controlling, utveckling eller konsultation – vi svarar gärna.',
+          footer_contact: 'Kontaktuppgifter',
+          label_email: 'E-post',
+          label_location: 'Ort',
+          label_company: 'Bolag',
+          value_location: 'Sverige',
+          copyright: '© 2026 MDF Design & Consulting. Alla rättigheter förbehållna.',
+          title: 'MDF Design & Consulting | Utveckling & ekonomi',
+          description: 'MDF Design & Consulting hjälper med ekonomisk redovisning & controlling samt utveckling av web, app och Excel. Konsultation inom ekonomi och IT.'
+        },
+        en: {
+          skip: 'Skip to content',
+          nav_services: 'What we do',
+          nav_examples: 'Examples',
+          nav_about: 'About',
+          nav_contact: 'Contact',
+          cta_short: 'Get in touch',
+          cta_contact: 'Contact us',
+          cta_services: 'See what we do',
+          hero_title: 'Development and finance — at the same table.',
+          hero_lead: 'We help with accounting & controlling as well as development — web, apps, Excel and more. Pure consulting in finance and IT is also available.',
+          services_title: 'What we do',
+          services_lead: 'Three tracks — one contact. Help where business and technology meet.',
+          svc1_title: 'Finance & controlling',
+          svc1_body: 'Accounting, controlling and financial advisory. Structure that makes the numbers clear and decisions easier.',
+          svc2_title: 'Development',
+          svc2_body: 'Web, mobile apps, Excel tools and other digital solutions — from idea to something you actually use.',
+          svc3_title: 'Consulting',
+          svc3_body: 'Advisory in finance and IT development — without requiring us to build the product. Sparring, choices and project support.',
+          apps_title: 'Examples of what we build',
+          apps_lead: 'Own products and client work — a selection of apps we have developed and run.',
+          app1_cat: 'Training & health',
+          app1_body: 'Mobile platform for athletes and training groups — events and community.',
+          app2_cat: 'Tools & travel',
+          app2_body: 'The app that helps you on your travels around the world',
+          app3_cat: 'Sports & analysis',
+          app3_body: 'Application for analysis and statistics in harness racing.',
+          status_live: 'Live · coathlete.se',
+          status_dev: 'In development',
+          about_title: 'About us',
+          about_p1: 'MDF Design & Consulting is run by Marie and Daniel Frölander. We combine experience in finance and project management with hands-on software development.',
+          about_p2: 'The goal is simple: turn ideas into reality — own products or assignments where you need more clarity, structure or code.',
+          footer_lead: 'Ask about accounting, controlling, development or consulting — we are happy to help.',
+          footer_contact: 'Contact details',
+          label_email: 'Email',
+          label_location: 'Location',
+          label_company: 'Company',
+          value_location: 'Sweden',
+          copyright: '© 2026 MDF Design & Consulting. All rights reserved.',
+          title: 'MDF Design & Consulting | Development & finance',
+          description: 'MDF Design & Consulting helps with accounting & controlling as well as web, app and Excel development. Consulting in finance and IT.'
+        }
+      };
+
+      function setLang(lang) {
+        var pack = dict[lang] || dict.sv;
+        document.documentElement.lang = lang;
+
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          var key = el.getAttribute('data-i18n');
+          if (pack[key] != null) el.textContent = pack[key];
+        });
+
+        if (pack.title) document.title = pack.title;
+        var metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc && pack.description) metaDesc.setAttribute('content', pack.description);
+
+        document.querySelectorAll('.lang-btn').forEach(function (b) {
+          b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+        });
+
+        try { localStorage.setItem('mdf-lang', lang); } catch (e) {}
+
+        if (panel && panel.getAttribute('data-open') === 'true') setOpen(true);
+        else if (btn) {
+          btn.setAttribute('aria-label', lang === 'en' ? 'Open menu' : 'Öppna meny');
+        }
+      }
+
+      document.querySelectorAll('.lang-btn').forEach(function (b) {
+        b.addEventListener('click', function () {
+          setLang(b.getAttribute('data-lang'));
+        });
+      });
+
+      var saved = null;
+      try { saved = localStorage.getItem('mdf-lang'); } catch (e) {}
+      if (saved === 'en' || saved === 'sv') setLang(saved);
+    })();
+  </script>
+</body>
+</html>
