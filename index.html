@@ -95,11 +95,23 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    header.site-header {
+      position: sticky;
+    }
+
     #mobile-panel {
-      transition: transform 0.25s ease, opacity 0.25s ease;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: 40;
+      max-height: min(70vh, 24rem);
+      overflow-y: auto;
+      box-shadow: 0 12px 24px rgba(26, 31, 28, 0.08);
+      transition: transform 0.2s ease, opacity 0.2s ease, visibility 0.2s ease;
     }
     #mobile-panel[data-open="false"] {
-      transform: translateY(-0.5rem);
+      transform: translateY(-0.35rem);
       opacity: 0;
       pointer-events: none;
       visibility: hidden;
@@ -176,10 +188,10 @@
 
   <a href="#main" class="skip-link" data-i18n="skip">Hoppa till innehåll</a>
 
-  <header class="sticky top-0 z-50 border-b border-ink/8 bg-paper/85 backdrop-blur-md">
-    <div class="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-5 sm:px-6">
+  <header class="site-header relative sticky top-0 z-50 border-b border-ink/8 bg-paper/85 backdrop-blur-md">
+    <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:h-16 sm:px-6">
       <a href="#" class="logo-mark flex items-center gap-3" aria-label="MDF Design & Consulting – startsida">
-        <svg class="h-11 w-11 shrink-0 sm:h-12 sm:w-12" viewBox="0 0 1254 1254" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet"><g transform="translate(0,1254) scale(0.1,-0.1)" fill="#1f4d3a" stroke="none"><path d="M0 6270 l0 -6270 6270 0 6270 0 0 6270 0 6270 -6270 0 -6270 0 0 -6270z m7208 868 l-3 -1953 -100 -22 c-209 -47 -332 -53 -1100 -53 l-715 0 0 68 c0 37 -1 745 -2 1574 -2 971 1 1511 7 1516 12 11 155 56 277 87 l88 23 2 -1442 3 -1441 567 0 c406 0 570 3 578 11 8 8 11 306 11 1090 0 594 -1 1312 -1 1597 l0 517 -437 0 c-470 0 -535 -5 -759 -55 -63 -14 -162 -41 -222 -60 -59 -19 -109 -35 -112 -35 -3 0 -5 88 -5 196 0 174 2 196 17 205 51 28 393 102 548 118 47 4 372 9 723 10 l637 1 -2 -1952z m1912 1382 l0 -570 -190 0 -190 0 0 380 0 380 -495 0 -495 0 0 -715 0 -715 671 0 672 0 -7 -42 c-3 -24 -20 -103 -37 -175 l-31 -133 -634 0 -634 0 -2 -767 -3 -767 -40 -23 c-46 -26 -267 -118 -307 -128 l-28 -7 0 1926 0 1926 875 0 875 0 0 -570z m-4002 -1522 l-3 -1902 -182 -2 -183 -1 -1 1541 c0 848 -4 1560 -7 1584 l-7 43 -82 -65 c-44 -35 -113 -95 -152 -131 l-71 -67 0 -1449 0 -1449 -185 0 -185 0 -2 1193 -3 1192 -67 -135 c-100 -203 -161 -391 -210 -657 -21 -112 -22 -152 -27 -858 l-6 -740 -185 0 -185 0 0 715 c1 623 3 732 18 845 80 595 309 1095 706 1544 139 157 403 374 595 490 97 58 396 209 419 210 4 1 6 -855 5 -1901z m3752 -432 c0 -21 -87 -181 -157 -290 -138 -213 -294 -394 -465 -541 l-113 -97 -3 256 -2 256 80 91 c68 77 147 187 224 312 l16 27 210 0 c171 0 210 -3 210 -14z"/></g></svg>
+        <svg class="h-9 w-9 shrink-0 sm:h-11 sm:w-11" viewBox="0 0 1254 1254" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet"><g transform="translate(0,1254) scale(0.1,-0.1)" fill="#1f4d3a" stroke="none"><path d="M0 6270 l0 -6270 6270 0 6270 0 0 6270 0 6270 -6270 0 -6270 0 0 -6270z m7208 868 l-3 -1953 -100 -22 c-209 -47 -332 -53 -1100 -53 l-715 0 0 68 c0 37 -1 745 -2 1574 -2 971 1 1511 7 1516 12 11 155 56 277 87 l88 23 2 -1442 3 -1441 567 0 c406 0 570 3 578 11 8 8 11 306 11 1090 0 594 -1 1312 -1 1597 l0 517 -437 0 c-470 0 -535 -5 -759 -55 -63 -14 -162 -41 -222 -60 -59 -19 -109 -35 -112 -35 -3 0 -5 88 -5 196 0 174 2 196 17 205 51 28 393 102 548 118 47 4 372 9 723 10 l637 1 -2 -1952z m1912 1382 l0 -570 -190 0 -190 0 0 380 0 380 -495 0 -495 0 0 -715 0 -715 671 0 672 0 -7 -42 c-3 -24 -20 -103 -37 -175 l-31 -133 -634 0 -634 0 -2 -767 -3 -767 -40 -23 c-46 -26 -267 -118 -307 -128 l-28 -7 0 1926 0 1926 875 0 875 0 0 -570z m-4002 -1522 l-3 -1902 -182 -2 -183 -1 -1 1541 c0 848 -4 1560 -7 1584 l-7 43 -82 -65 c-44 -35 -113 -95 -152 -131 l-71 -67 0 -1449 0 -1449 -185 0 -185 0 -2 1193 -3 1192 -67 -135 c-100 -203 -161 -391 -210 -657 -21 -112 -22 -152 -27 -858 l-6 -740 -185 0 -185 0 0 715 c1 623 3 732 18 845 80 595 309 1095 706 1544 139 157 403 374 595 490 97 58 396 209 419 210 4 1 6 -855 5 -1901z m3752 -432 c0 -21 -87 -181 -157 -290 -138 -213 -294 -394 -465 -541 l-113 -97 -3 256 -2 256 80 91 c68 77 147 187 224 312 l16 27 210 0 c171 0 210 -3 210 -14z"/></g></svg>
         <span class="hidden text-sm font-semibold text-ink sm:inline">MDF Design &amp; Consulting</span>
       </a>
 
