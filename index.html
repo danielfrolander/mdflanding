@@ -194,11 +194,23 @@
 
     .product-link {
       display: block;
+      width: 100%;
       transition: color 0.2s ease;
+    }
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .product-brand {
+      display: block;
+      width: 100%;
     }
     .product-brand-panel {
       display: flex;
       align-items: center;
+      width: 100%;
+      box-sizing: border-box;
       min-height: 5rem;
       padding: 1rem 1.25rem;
       border-radius: 0.875rem;
@@ -223,9 +235,6 @@
       transform: translateY(-1px);
     }
 
-    .product-brand {
-      display: block;
-    }
     .product-brand-logo {
       display: block;
       width: auto;
@@ -237,8 +246,9 @@
     }
     .product-brand-logo--yumlate {
       width: 100%;
-      max-width: none;
-      max-height: 3.25rem;
+      max-width: 14rem;
+      max-height: 3rem;
+      object-position: left center;
     }
     .product-brand-name {
       font-family: 'Fraunces', Georgia, serif;
@@ -434,35 +444,41 @@
         </div>
 
         <ul class="mt-12 grid gap-8 sm:grid-cols-3">
-          <li class="border-t border-ink/15 pt-6">
+          <li class="product-card border-t border-ink/15 pt-6">
             <a href="https://coathlete.se" class="product-brand product-link" target="_blank" rel="noopener noreferrer">
               <div class="product-brand-panel">
                 <img src="assets/products/coathlete-logo.png" width="736" height="168" alt="Coathlete" class="product-brand-logo">
               </div>
             </a>
-            <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app1_cat">Träning &amp; hälsa</p>
-            <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app1_body">Planera, träna, umgås — mobilplattformen för funktionell fitness och CrossFit.</p>
-            <p class="mt-4 text-xs font-medium text-leaf" data-i18n="status_live">Lanserad · coathlete.se</p>
+            <div class="mt-4">
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app1_cat">Träning &amp; hälsa</p>
+              <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app1_body">Planera, träna, umgås — mobilplattformen för funktionell fitness och CrossFit.</p>
+              <p class="mt-4 text-xs font-medium text-leaf" data-i18n="status_live">Lanserad · coathlete.se</p>
+            </div>
           </li>
-          <li class="border-t border-ink/15 pt-6">
+          <li class="product-card border-t border-ink/15 pt-6">
             <a href="https://yumlate.com" class="product-brand product-link" target="_blank" rel="noopener noreferrer">
               <div class="product-brand-panel product-brand-panel--yumlate">
                 <img src="assets/products/yumlate-logo.svg" width="360" height="100" alt="Yumlate" class="product-brand-logo product-brand-logo--yumlate">
               </div>
             </a>
-            <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app2_cat">Verktyg &amp; resa</p>
-            <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app2_body">På resa eller hemma: fota menyn och få översättning, allergenmarkering och valutaomräkning på några sekunder.</p>
-            <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev_yumlate">Under utveckling · yumlate.com</p>
+            <div class="mt-4">
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app2_cat">Verktyg &amp; resa</p>
+              <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app2_body">På resa eller hemma: fota menyn och få översättning, allergenmarkering och valutaomräkning på några sekunder.</p>
+              <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev_yumlate">Under utveckling · yumlate.com</p>
+            </div>
           </li>
-          <li class="border-t border-ink/15 pt-6">
+          <li class="product-card border-t border-ink/15 pt-6">
             <div class="product-brand">
               <div class="product-brand-panel product-brand-panel--replyo">
                 <h3 class="product-brand-name">Replyo</h3>
               </div>
             </div>
-            <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app3_cat">Ärendehantering</p>
-            <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app3_body">Koppla era e-postadresser, samla all kommunikation och hantera inkommande ärenden snabbt med inbyggd AI-assistent.</p>
-            <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev">Under utveckling</p>
+            <div class="mt-4">
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app3_cat">Ärendehantering</p>
+              <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app3_body">Koppla era e-postadresser, samla all kommunikation och hantera inkommande ärenden snabbt med inbyggd AI-assistent.</p>
+              <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev">Under utveckling</p>
+            </div>
           </li>
         </ul>
       </div>
