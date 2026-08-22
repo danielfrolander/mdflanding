@@ -96,6 +96,18 @@
     }
     .skip-link:focus { top: 1rem; }
 
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     a:focus-visible,
     button:focus-visible {
       outline: 2px solid var(--leaf);
@@ -188,6 +200,19 @@
       transition: transform 0.2s ease;
     }
     .product-link:hover .arrow { transform: translateX(3px); }
+
+    .product-logo {
+      min-height: 2.5rem;
+    }
+    .product-logo img,
+    .product-logo svg {
+      display: block;
+      max-height: 2.5rem;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: left center;
+    }
 
     .service-row {
       transition: background-color 0.25s ease;
@@ -376,25 +401,31 @@
 
         <ul class="mt-12 grid gap-8 sm:grid-cols-3">
           <li class="border-t border-ink/15 pt-6">
-            <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app1_cat">Träning &amp; hälsa</p>
-            <h3 class="mt-2 font-display text-xl font-semibold text-ink">
-              <a href="https://coathlete.se" class="product-link inline-flex items-center gap-1.5 hover:text-forest" target="_blank" rel="noopener noreferrer">
-                Coathlete <span class="arrow text-sm" aria-hidden="true">→</span>
-              </a>
-            </h3>
+            <a href="https://coathlete.se" class="product-logo product-link inline-flex items-center" target="_blank" rel="noopener noreferrer">
+              <img src="assets/products/coathlete-logo.png" width="736" height="168" alt="Coathlete">
+              <span class="sr-only">Coathlete</span>
+              <span class="arrow ml-1.5 text-sm text-mute" aria-hidden="true">→</span>
+            </a>
+            <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app1_cat">Träning &amp; hälsa</p>
             <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app1_body">Mobilplattform för idrottare och träningsgrupper – event och gemenskap.</p>
             <p class="mt-4 text-xs font-medium text-leaf" data-i18n="status_live">Lanserad · coathlete.se</p>
           </li>
           <li class="border-t border-ink/15 pt-6">
-            <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app2_cat">Verktyg &amp; resa</p>
-            <h3 class="mt-2 font-display text-xl font-semibold text-ink">Yumlate</h3>
+            <a href="https://yumlate.com" class="product-logo product-link inline-flex items-center" target="_blank" rel="noopener noreferrer">
+              <img src="assets/products/yumlate-logo.svg" width="360" height="100" alt="Yumlate">
+              <span class="sr-only">Yumlate</span>
+              <span class="arrow ml-1.5 text-sm text-mute" aria-hidden="true">→</span>
+            </a>
+            <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app2_cat">Verktyg &amp; resa</p>
             <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app2_body">Appen som hjälper dig på dina resor världen över</p>
-            <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev">Under utveckling</p>
+            <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev_yumlate">Under utveckling · yumlate.com</p>
           </li>
           <li class="border-t border-ink/15 pt-6">
-            <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app3_cat">Sport &amp; analys</p>
-            <h3 class="mt-2 font-display text-xl font-semibold text-ink">Totomat</h3>
-            <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app3_body">Applikation för analys och statistik inom travsport.</p>
+            <div class="product-logo flex items-center">
+              <h3 class="font-display text-xl font-semibold text-ink">Replyo</h3>
+            </div>
+            <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app3_cat">Ärendehantering</p>
+            <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app3_body">Koppla era e-postadresser, samla all kommunikation och hantera inkommande ärenden snabbt med inbyggd AI-assistent.</p>
             <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev">Under utveckling</p>
           </li>
         </ul>
@@ -537,10 +568,11 @@
           app1_body: 'Mobilplattform för idrottare och träningsgrupper – event och gemenskap.',
           app2_cat: 'Verktyg & resa',
           app2_body: 'Appen som hjälper dig på dina resor världen över',
-          app3_cat: 'Sport & analys',
-          app3_body: 'Applikation för analys och statistik inom travsport.',
+          app3_cat: 'Ärendehantering',
+          app3_body: 'Koppla era e-postadresser, samla all kommunikation och hantera inkommande ärenden snabbt med inbyggd AI-assistent.',
           status_live: 'Lanserad · coathlete.se',
           status_dev: 'Under utveckling',
+          status_dev_yumlate: 'Under utveckling · yumlate.com',
           about_title: 'Om oss',
           about_p1: 'MDF Design & Consulting drivs av Marie och Daniel Frölander. Vi kombinerar erfarenhet inom ekonomi och projektledning med praktisk mjukvaruutveckling.',
           about_p2: 'Målet är enkelt: förverkliga idéer – egna produkter eller uppdrag där ni behöver mer klarhet, mer struktur eller mer kod.',
@@ -550,7 +582,7 @@
           label_location: 'Ort',
           label_org: 'Org.nr',
           label_company: 'Bolag',
-          value_location: 'Västerås',
+          value_location: 'Västerås, Sweden',
           copyright: '© 2026 MDF Design & Consulting. Alla rättigheter förbehållna.',
           title: 'MDF Design & Consulting | Utveckling & ekonomi',
           description: 'MDF Design & Consulting hjälper med ekonomisk redovisning & controlling samt utveckling av web, app och Excel. Konsultation inom ekonomi och IT.'
@@ -583,10 +615,11 @@
           app1_body: 'Mobile platform for athletes and training groups — events and community.',
           app2_cat: 'Tools & travel',
           app2_body: 'The app that helps you on your travels around the world',
-          app3_cat: 'Sports & analysis',
-          app3_body: 'Application for analysis and statistics in harness racing.',
+          app3_cat: 'Case management',
+          app3_body: 'Connect your email addresses, collect all communication and handle incoming cases quickly with a built-in AI assistant.',
           status_live: 'Live · coathlete.se',
           status_dev: 'In development',
+          status_dev_yumlate: 'In development · yumlate.com',
           about_title: 'About us',
           about_p1: 'MDF Design & Consulting is run by Marie and Daniel Frölander. We combine experience in finance and project management with hands-on software development.',
           about_p2: 'The goal is simple: turn ideas into reality — own products or assignments where you need more clarity, structure or code.',
