@@ -197,21 +197,65 @@
     }
     .product-link .arrow {
       display: inline-block;
-      transition: transform 0.2s ease;
+      flex-shrink: 0;
+      transition: transform 0.2s ease, color 0.2s ease;
     }
     .product-link:hover .arrow { transform: translateX(3px); }
 
-    .product-logo {
-      min-height: 2.5rem;
+    .product-brand {
+      display: flex;
+      align-items: stretch;
+      gap: 0.625rem;
     }
-    .product-logo img,
-    .product-logo svg {
+    .product-brand-panel {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      min-height: 5rem;
+      padding: 1rem 1.25rem;
+      border-radius: 0.875rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(145deg, #1a1f1c 0%, #101412 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 1px 2px rgba(26, 31, 28, 0.08);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .product-brand-panel--yumlate {
+      background: linear-gradient(145deg, #0a192f 0%, #132f4c 100%);
+    }
+    .product-brand-panel--replyo {
+      background: linear-gradient(145deg, #1f2937 0%, #111827 100%);
+    }
+    .product-link:hover .product-brand-panel {
+      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 8px 20px rgba(26, 31, 28, 0.14);
+      transform: translateY(-1px);
+    }
+    .product-link:hover .arrow { color: var(--forest); }
+
+    .product-brand-logo {
       display: block;
-      max-height: 2.5rem;
       width: auto;
       max-width: 100%;
+      height: auto;
+      max-height: 2.75rem;
       object-fit: contain;
       object-position: left center;
+    }
+    .product-brand-logo--yumlate {
+      width: 100%;
+      max-width: none;
+      max-height: 3.25rem;
+    }
+    .product-brand-name {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.375rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #f4f6f3;
     }
 
     .service-row {
@@ -401,28 +445,32 @@
 
         <ul class="mt-12 grid gap-8 sm:grid-cols-3">
           <li class="border-t border-ink/15 pt-6">
-            <a href="https://coathlete.se" class="product-logo product-link inline-flex items-center" target="_blank" rel="noopener noreferrer">
-              <img src="assets/products/coathlete-logo.png" width="736" height="168" alt="Coathlete">
-              <span class="sr-only">Coathlete</span>
-              <span class="arrow ml-1.5 text-sm text-mute" aria-hidden="true">→</span>
+            <a href="https://coathlete.se" class="product-brand product-link" target="_blank" rel="noopener noreferrer">
+              <div class="product-brand-panel">
+                <img src="assets/products/coathlete-logo.png" width="736" height="168" alt="Coathlete" class="product-brand-logo">
+              </div>
+              <span class="arrow self-center text-lg text-mute" aria-hidden="true">→</span>
             </a>
             <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app1_cat">Träning &amp; hälsa</p>
             <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app1_body">Mobilplattform för idrottare och träningsgrupper – event och gemenskap.</p>
             <p class="mt-4 text-xs font-medium text-leaf" data-i18n="status_live">Lanserad · coathlete.se</p>
           </li>
           <li class="border-t border-ink/15 pt-6">
-            <a href="https://yumlate.com" class="product-logo product-link inline-flex items-center" target="_blank" rel="noopener noreferrer">
-              <img src="assets/products/yumlate-logo.svg" width="360" height="100" alt="Yumlate">
-              <span class="sr-only">Yumlate</span>
-              <span class="arrow ml-1.5 text-sm text-mute" aria-hidden="true">→</span>
+            <a href="https://yumlate.com" class="product-brand product-link" target="_blank" rel="noopener noreferrer">
+              <div class="product-brand-panel product-brand-panel--yumlate">
+                <img src="assets/products/yumlate-logo.svg" width="360" height="100" alt="Yumlate" class="product-brand-logo product-brand-logo--yumlate">
+              </div>
+              <span class="arrow self-center text-lg text-mute" aria-hidden="true">→</span>
             </a>
             <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app2_cat">Verktyg &amp; resa</p>
             <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app2_body">Appen som hjälper dig på dina resor världen över</p>
             <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev_yumlate">Under utveckling · yumlate.com</p>
           </li>
           <li class="border-t border-ink/15 pt-6">
-            <div class="product-logo flex items-center">
-              <h3 class="font-display text-xl font-semibold text-ink">Replyo</h3>
+            <div class="product-brand">
+              <div class="product-brand-panel product-brand-panel--replyo">
+                <h3 class="product-brand-name">Replyo</h3>
+              </div>
             </div>
             <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app3_cat">Ärendehantering</p>
             <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app3_body">Koppla era e-postadresser, samla all kommunikation och hantera inkommande ärenden snabbt med inbyggd AI-assistent.</p>
