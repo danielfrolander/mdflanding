@@ -193,23 +193,11 @@
     }
 
     .product-link {
+      display: block;
       transition: color 0.2s ease;
-    }
-    .product-link .arrow {
-      display: inline-block;
-      flex-shrink: 0;
-      transition: transform 0.2s ease, color 0.2s ease;
-    }
-    .product-link:hover .arrow { transform: translateX(3px); }
-
-    .product-brand {
-      display: flex;
-      align-items: stretch;
-      gap: 0.625rem;
     }
     .product-brand-panel {
       display: flex;
-      flex: 1;
       align-items: center;
       min-height: 5rem;
       padding: 1rem 1.25rem;
@@ -234,8 +222,10 @@
         0 8px 20px rgba(26, 31, 28, 0.14);
       transform: translateY(-1px);
     }
-    .product-link:hover .arrow { color: var(--forest); }
 
+    .product-brand {
+      display: block;
+    }
     .product-brand-logo {
       display: block;
       width: auto;
@@ -449,7 +439,6 @@
               <div class="product-brand-panel">
                 <img src="assets/products/coathlete-logo.png" width="736" height="168" alt="Coathlete" class="product-brand-logo">
               </div>
-              <span class="arrow self-center text-lg text-mute" aria-hidden="true">→</span>
             </a>
             <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app1_cat">Träning &amp; hälsa</p>
             <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app1_body">Mobilplattform för idrottare och träningsgrupper – event och gemenskap.</p>
@@ -460,7 +449,6 @@
               <div class="product-brand-panel product-brand-panel--yumlate">
                 <img src="assets/products/yumlate-logo.svg" width="360" height="100" alt="Yumlate" class="product-brand-logo product-brand-logo--yumlate">
               </div>
-              <span class="arrow self-center text-lg text-mute" aria-hidden="true">→</span>
             </a>
             <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app2_cat">Verktyg &amp; resa</p>
             <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app2_body">Appen som hjälper dig på dina resor världen över</p>
