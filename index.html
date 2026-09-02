@@ -221,11 +221,18 @@
         0 1px 2px rgba(26, 31, 28, 0.08);
       transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     }
+    .product-brand-panel--vera {
+      background: linear-gradient(145deg, #ffffff 0%, #eef4f9 100%);
+      border-color: rgba(15, 120, 200, 0.16);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 2px rgba(10, 80, 140, 0.06);
+    }
     .product-brand-panel--yumlate {
       background: linear-gradient(145deg, #0a192f 0%, #132f4c 100%);
     }
     .product-brand-panel--replyo {
-      background: linear-gradient(145deg, #1f2937 0%, #111827 100%);
+      background: linear-gradient(145deg, #0f172a 0%, #111827 100%);
     }
     .product-link:hover .product-brand-panel {
       border-color: rgba(255, 255, 255, 0.14);
@@ -233,6 +240,12 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.06),
         0 8px 20px rgba(26, 31, 28, 0.14);
       transform: translateY(-1px);
+    }
+    .product-link:hover .product-brand-panel--vera {
+      border-color: rgba(15, 120, 200, 0.28);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 8px 20px rgba(10, 80, 140, 0.12);
     }
 
     .product-brand-logo {
@@ -244,18 +257,18 @@
       object-fit: contain;
       object-position: left center;
     }
+    .product-brand-logo--vera {
+      max-height: 3.25rem;
+    }
     .product-brand-logo--yumlate {
       width: 100%;
       max-width: 14rem;
       max-height: 3rem;
       object-position: left center;
     }
-    .product-brand-name {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 1.375rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: #f4f6f3;
+    .product-brand-logo--replyo {
+      max-height: 2.5rem;
+      max-width: 11rem;
     }
 
     .service-row {
@@ -443,7 +456,19 @@
           <p class="mt-3 text-mute" data-i18n="apps_lead">Egna produkter och uppdrag – ett urval av appar vi utvecklat och driver.</p>
         </div>
 
-        <ul class="mt-12 grid gap-8 sm:grid-cols-3">
+        <ul class="mt-12 grid gap-8 sm:grid-cols-2">
+          <li class="product-card border-t border-ink/15 pt-6">
+            <div class="product-brand">
+              <div class="product-brand-panel product-brand-panel--vera">
+                <img src="assets/products/vera-logo.svg" width="1653" height="1245" alt="Vera" class="product-brand-logo product-brand-logo--vera">
+              </div>
+            </div>
+            <div class="mt-4">
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app1_cat">Ekonomi &amp; bokföring</p>
+              <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app1_body">Svenskt AI-native ekonomisystem för K2 — bokföring, fakturor och rapporter med AI-stöd.</p>
+              <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev">Under utveckling</p>
+            </div>
+          </li>
           <li class="product-card border-t border-ink/15 pt-6">
             <a href="https://coathlete.se" class="product-brand product-link" target="_blank" rel="noopener noreferrer">
               <div class="product-brand-panel">
@@ -451,8 +476,8 @@
               </div>
             </a>
             <div class="mt-4">
-              <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app1_cat">Träning &amp; hälsa</p>
-              <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app1_body">Planera, träna, umgås — mobilplattformen för funktionell fitness och CrossFit.</p>
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app2_cat">Träning &amp; hälsa</p>
+              <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app2_body">Planera, träna, umgås — mobilplattformen för funktionell fitness och CrossFit.</p>
               <p class="mt-4 text-xs font-medium text-leaf" data-i18n="status_live">Lanserad · coathlete.se</p>
             </div>
           </li>
@@ -463,20 +488,20 @@
               </div>
             </a>
             <div class="mt-4">
-              <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app2_cat">Verktyg &amp; resa</p>
-              <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app2_body">På resa eller hemma: fota menyn och få översättning, allergenmarkering och valutaomräkning på några sekunder.</p>
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app3_cat">Verktyg &amp; resa</p>
+              <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app3_body">På resa eller hemma: fota menyn och få översättning, allergenmarkering och valutaomräkning på några sekunder.</p>
               <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev_yumlate">Under utveckling · yumlate.com</p>
             </div>
           </li>
           <li class="product-card border-t border-ink/15 pt-6">
             <div class="product-brand">
               <div class="product-brand-panel product-brand-panel--replyo">
-                <h3 class="product-brand-name">Replyo</h3>
+                <img src="assets/products/replyo-logo.svg" width="2320" height="820" alt="Replyo" class="product-brand-logo product-brand-logo--replyo">
               </div>
             </div>
             <div class="mt-4">
-              <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app3_cat">Ärendehantering</p>
-              <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app3_body">Koppla era e-postadresser, samla all kommunikation och hantera inkommande ärenden snabbt med inbyggd AI-assistent.</p>
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest" data-i18n="app4_cat">Ärendehantering</p>
+              <p class="mt-2 text-sm leading-relaxed text-mute" data-i18n="app4_body">Koppla era e-postadresser, samla all kommunikation och hantera inkommande ärenden snabbt med inbyggd AI-assistent.</p>
               <p class="mt-4 text-xs font-medium text-mute" data-i18n="status_dev">Under utveckling</p>
             </div>
           </li>
@@ -616,12 +641,14 @@
           svc3_body: 'Ren rådgivning inom ekonomi och IT-utveckling – utan krav på att vi bygger produkten. Sparring, vägval och projektstöd.',
           apps_title: 'Exempel på vad vi bygger',
           apps_lead: 'Egna produkter och uppdrag – ett urval av appar vi utvecklat och driver.',
-          app1_cat: 'Träning & hälsa',
-          app1_body: 'Planera, träna, umgås — mobilplattformen för funktionell fitness och CrossFit.',
-          app2_cat: 'Verktyg & resa',
-          app2_body: 'På resa eller hemma: fota menyn och få översättning, allergenmarkering och valutaomräkning på några sekunder.',
-          app3_cat: 'Ärendehantering',
-          app3_body: 'Koppla era e-postadresser, samla all kommunikation och hantera inkommande ärenden snabbt med inbyggd AI-assistent.',
+          app1_cat: 'Ekonomi & bokföring',
+          app1_body: 'Svenskt AI-native ekonomisystem för K2 — bokföring, fakturor och rapporter med AI-stöd.',
+          app2_cat: 'Träning & hälsa',
+          app2_body: 'Planera, träna, umgås — mobilplattformen för funktionell fitness och CrossFit.',
+          app3_cat: 'Verktyg & resa',
+          app3_body: 'På resa eller hemma: fota menyn och få översättning, allergenmarkering och valutaomräkning på några sekunder.',
+          app4_cat: 'Ärendehantering',
+          app4_body: 'Koppla era e-postadresser, samla all kommunikation och hantera inkommande ärenden snabbt med inbyggd AI-assistent.',
           status_live: 'Lanserad · coathlete.se',
           status_dev: 'Under utveckling',
           status_dev_yumlate: 'Under utveckling · yumlate.com',
@@ -663,12 +690,14 @@
           svc3_body: 'Advisory in finance and IT development — without requiring us to build the product. Sparring, choices and project support.',
           apps_title: 'Examples of what we build',
           apps_lead: 'Own products and client work — a selection of apps we have developed and run.',
-          app1_cat: 'Training & health',
-          app1_body: 'Plan, train, connect — the mobile platform for functional fitness and CrossFit.',
-          app2_cat: 'Tools & travel',
-          app2_body: 'At home or abroad: snap the menu and get translation, allergen tags and currency conversion in seconds.',
-          app3_cat: 'Case management',
-          app3_body: 'Connect your email addresses, collect all communication and handle incoming cases quickly with a built-in AI assistant.',
+          app1_cat: 'Finance & bookkeeping',
+          app1_body: 'Swedish AI-native accounting for K2 — bookkeeping, invoices and reports with AI support.',
+          app2_cat: 'Training & health',
+          app2_body: 'Plan, train, connect — the mobile platform for functional fitness and CrossFit.',
+          app3_cat: 'Tools & travel',
+          app3_body: 'At home or abroad: snap the menu and get translation, allergen tags and currency conversion in seconds.',
+          app4_cat: 'Case management',
+          app4_body: 'Connect your email addresses, collect all communication and handle incoming cases quickly with a built-in AI assistant.',
           status_live: 'Live · coathlete.se',
           status_dev: 'In development',
           status_dev_yumlate: 'In development · yumlate.com',
